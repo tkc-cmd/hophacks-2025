@@ -1,0 +1,46 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.env
+.env.*
+.venv/
+venv/
+.envrc
+
+# Packages
+*.egg-info/
+.eggs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+
+# Byte-compiled
+*.pyc
+
+# Local data
+pharmacy_voice.db
+static/tts/
+
+# Coverage / Test
+.coverage
+.pytest_cache/
+
+# Build
+build/
+dist/
+
+# Ngrok
+.ngrok2/
+.ngrok.log
+
