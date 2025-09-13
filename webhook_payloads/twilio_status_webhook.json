@@ -1,0 +1,52 @@
+{
+  "description": "Example Twilio call status webhook payload",
+  "method": "POST",
+  "url": "/twilio/status",
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "X-Twilio-Signature": "signature_hash_here"
+  },
+  "body": {
+    "AccountSid": "AC_example_account_sid_placeholder",
+    "ApiVersion": "2010-04-01",
+    "CallSid": "CA_example_call_sid_placeholder",
+    "CallStatus": "completed",
+    "Called": "+15551234567",
+    "Caller": "+15559876543",
+    "CallDuration": "127",
+    "Direction": "inbound",
+    "From": "+15559876543",
+    "To": "+15551234567",
+    "Timestamp": "Mon, 01 Jan 2024 12:00:00 +0000"
+  },
+  "status_values": [
+    {
+      "status": "ringing",
+      "description": "Call is ringing"
+    },
+    {
+      "status": "in-progress", 
+      "description": "Call is active and connected"
+    },
+    {
+      "status": "completed",
+      "description": "Call ended normally"
+    },
+    {
+      "status": "busy",
+      "description": "Caller received busy signal"
+    },
+    {
+      "status": "failed",
+      "description": "Call failed to connect"
+    },
+    {
+      "status": "no-answer",
+      "description": "Call was not answered"
+    },
+    {
+      "status": "canceled",
+      "description": "Call was canceled before connection"
+    }
+  ]
+}

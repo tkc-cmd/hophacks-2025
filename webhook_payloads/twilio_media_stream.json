@@ -1,0 +1,57 @@
+{
+  "description": "Example Twilio Media Streams WebSocket messages",
+  "messages": [
+    {
+      "event": "start",
+      "sequenceNumber": "1",
+      "start": {
+        "streamSid": "MZ_example_stream_sid_placeholder",
+        "accountSid": "AC_example_account_sid_placeholder",
+        "callSid": "CA_example_call_sid_placeholder",
+        "tracks": ["inbound"],
+        "mediaFormat": {
+          "encoding": "audio/x-mulaw",
+          "sampleRate": 8000,
+          "channels": 1
+        }
+      },
+      "streamSid": "MZ_example_stream_sid_placeholder"
+    },
+    {
+      "event": "media",
+      "sequenceNumber": "2",
+      "media": {
+        "track": "inbound",
+        "chunk": "1",
+        "timestamp": "1234567890123",
+        "payload": "base64_encoded_mulaw_audio_data_here"
+      },
+      "streamSid": "MZ_example_stream_sid_placeholder"
+    },
+    {
+      "event": "media",
+      "sequenceNumber": "3",
+      "media": {
+        "track": "inbound",
+        "chunk": "2",
+        "timestamp": "1234567890143",
+        "payload": "more_base64_encoded_audio_data"
+      },
+      "streamSid": "MZ_example_stream_sid_placeholder"
+    },
+    {
+      "event": "stop",
+      "sequenceNumber": "4",
+      "stop": {
+        "streamSid": "MZ_example_stream_sid_placeholder"
+      },
+      "streamSid": "MZ_example_stream_sid_placeholder"
+    }
+  ],
+  "notes": [
+    "Audio payload is base64-encoded 8kHz μ-law PCM",
+    "Each chunk represents ~20ms of audio (160 bytes)",
+    "Sequence numbers increment for each message",
+    "Timestamp is in milliseconds since epoch"
+  ]
+}

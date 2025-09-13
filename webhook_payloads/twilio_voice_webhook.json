@@ -1,0 +1,36 @@
+{
+  "description": "Example Twilio voice webhook payload",
+  "method": "POST",
+  "url": "/twilio/voice",
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "X-Twilio-Signature": "signature_hash_here"
+  },
+  "body": {
+    "AccountSid": "AC_example_account_sid_placeholder",
+    "ApiVersion": "2010-04-01",
+    "CallSid": "CA_example_call_sid_placeholder",
+    "CallStatus": "ringing",
+    "Called": "+15551234567",
+    "CalledCity": "SAN FRANCISCO",
+    "CalledCountry": "US",
+    "CalledState": "CA",
+    "CalledZip": "94105",
+    "Caller": "+15559876543",
+    "CallerCity": "NEW YORK",
+    "CallerCountry": "US",
+    "CallerState": "NY",
+    "CallerZip": "10001",
+    "Direction": "inbound",
+    "From": "+15559876543",
+    "FromCity": "NEW YORK",
+    "FromCountry": "US",
+    "FromState": "NY",
+    "FromZip": "10001",
+    "To": "+15551234567",
+    "ToCity": "SAN FRANCISCO",
+    "ToCountry": "US",
+    "ToState": "CA",
+    "ToZip": "94105"
+  }
+}

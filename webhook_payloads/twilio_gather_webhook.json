@@ -1,0 +1,51 @@
+{
+  "description": "Example Twilio Gather speech result webhook payload",
+  "method": "POST",
+  "url": "/twilio/gather",
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "X-Twilio-Signature": "signature_hash_here"
+  },
+  "body": {
+    "AccountSid": "AC_example_account_sid_placeholder",
+    "ApiVersion": "2010-04-01",
+    "CallSid": "CA_example_call_sid_placeholder",
+    "CallStatus": "in-progress",
+    "Called": "+15551234567",
+    "Caller": "+15559876543",
+    "Direction": "inbound",
+    "From": "+15559876543",
+    "To": "+15551234567",
+    "SpeechResult": "I need to refill my atorvastatin twenty milligrams",
+    "Confidence": "0.9234567",
+    "Digits": "",
+    "msg": ""
+  },
+  "examples": [
+    {
+      "scenario": "Prescription refill request",
+      "SpeechResult": "I need to refill my blood pressure medication",
+      "Confidence": "0.8765432"
+    },
+    {
+      "scenario": "Drug interaction question",
+      "SpeechResult": "Can I take ibuprofen with my other medications",
+      "Confidence": "0.9123456"
+    },
+    {
+      "scenario": "Administration guidance",
+      "SpeechResult": "How should I take my atorvastatin",
+      "Confidence": "0.8901234"
+    },
+    {
+      "scenario": "Identity verification",
+      "SpeechResult": "Jane Smith January second nineteen seventy five",
+      "Confidence": "0.7654321"
+    },
+    {
+      "scenario": "Low confidence result",
+      "SpeechResult": "unclear mumbled speech",
+      "Confidence": "0.2345678"
+    }
+  ]
+}
