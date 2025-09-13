@@ -2,7 +2,10 @@
 
 import base64
 import struct
-import audioop
+try:
+    import audioop
+except ImportError:
+    import audioop_lts as audioop
 import re
 from typing import List, Optional, Tuple
 from dataclasses import dataclass

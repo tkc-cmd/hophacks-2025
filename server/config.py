@@ -47,7 +47,7 @@ class Settings(BaseSettings):
     max_tts_chunk_chars: int = 200
     
     # LLM Configuration
-    gemini_model: str = "gemini-pro"
+    gemini_model: str = "gemini-1.5-flash"
     max_conversation_history: int = 10
     max_response_tokens: int = 150
     
@@ -71,4 +71,6 @@ def get_static_file_url(filename: str, call_sid: Optional[str] = None) -> str:
 
 def get_media_stream_url(call_sid: str, token: str) -> str:
     """Generate WebSocket URL for Twilio Media Streams."""
-    return f"wss://{settings.public_host.replace('https://', '').replace('http://', '')}/twilio/media?callSid={call_sid}&token={token}"
+    # Ensure we use wss:// for secure websockets with ngrok
+    base_host = settings.public_host.replace('https://', '').replace('http://', '')
+    return f"wss://{base_host}/twilio/media?callSid={call_sid}&token={token}"

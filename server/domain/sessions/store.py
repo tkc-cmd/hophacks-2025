@@ -147,10 +147,14 @@ class SessionStore:
     def __init__(self):
         self._sessions: Dict[str, CallSessionData] = {}
         self._cleanup_task: Optional[asyncio.Task] = None
-        self._start_cleanup_task()
+        self._cleanup_started = False
     
     def create_session(self, call_sid: str, phone_number: str) -> CallSessionData:
         """Create a new session."""
+        # Start cleanup task if not already started and event loop is available
+        if not self._cleanup_started:
+            self._start_cleanup_task()
+            
         session = CallSessionData(
             call_sid=call_sid,
             phone_number=phone_number,
@@ -209,17 +213,25 @@ class SessionStore:
     
     def _start_cleanup_task(self):
         """Start background cleanup task."""
-        async def cleanup_loop():
-            while True:
-                try:
-                    await asyncio.sleep(300)  # Run every 5 minutes
-                    cleaned = self.cleanup_expired_sessions()
-                    if cleaned > 0:
-                        print(f"Cleaned up {cleaned} expired sessions")
-                except Exception as e:
-                    print(f"Error in session cleanup: {e}")
-        
-        self._cleanup_task = asyncio.create_task(cleanup_loop())
+        if self._cleanup_started:
+            return
+            
+        try:
+            async def cleanup_loop():
+                while True:
+                    try:
+                        await asyncio.sleep(300)  # Run every 5 minutes
+                        cleaned = self.cleanup_expired_sessions()
+                        if cleaned > 0:
+                            print(f"Cleaned up {cleaned} expired sessions")
+                    except Exception as e:
+                        print(f"Error in session cleanup: {e}")
+            
+            self._cleanup_task = asyncio.create_task(cleanup_loop())
+            self._cleanup_started = True
+        except RuntimeError:
+            # No event loop running, will start later
+            pass
     
     async def shutdown(self):
         """Shutdown the session store."""

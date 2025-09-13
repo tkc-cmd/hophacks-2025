@@ -11,7 +11,7 @@ from fastapi import FastAPI, Request, Response, WebSocket, HTTPException, Depend
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import PlainTextResponse
-from twilio.twiml import VoiceResponse
+from twilio.twiml.voice_response import VoiceResponse
 from twilio.request_validator import RequestValidator
 from sqlalchemy.orm import Session
 

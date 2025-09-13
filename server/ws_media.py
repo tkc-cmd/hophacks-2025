@@ -35,14 +35,14 @@ class MediaStreamHandler:
     async def handle_connection(self, websocket: WebSocket, call_sid: str, token: str):
         """Handle a new Media Streams connection."""
         
+        # Accept connection first
+        await websocket.accept()
+        
         # Validate token (basic implementation)
         if not self._validate_token(call_sid, token):
             logger.warning(f"Invalid token for call {call_sid}")
             await websocket.close(code=1008, reason="Invalid token")
             return
-        
-        # Accept connection
-        await websocket.accept()
         self.active_connections[call_sid] = websocket
         
         # Initialize session if not exists
