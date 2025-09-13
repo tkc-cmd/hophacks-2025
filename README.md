@@ -1,5 +1,9 @@
 # Pharmacy Voice Agent MVP
 
+Voice agent pharmacy tool for refilling prescriptions, pharmacological conflicts, and administration advice
+
+Contributors: Theo Chapman, Rohan Butani, Rohan Badal, Soren Ghorai
+
 A HIPAA-aware pharmacy voice agent that runs on Twilio phone calls and supports prescription refills, drug interaction checks, and administration guidance with real-time audio processing, barge-in capabilities, and latency-hiding response synthesis.
 
 ## Features
